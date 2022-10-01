@@ -11,6 +11,12 @@
 
     <artifactId>bpmn-parser-web</artifactId>
 
+    <properties>
+        <openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
+
+        <openapi-generator.root.package>com.camunda.bpmn.diagram</openapi-generator.root.package>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -19,6 +25,38 @@
                 <configuration>
                     <skip>false</skip>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-users-api</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>spring</generatorName>
+                            <library>spring-cloud</library>
+
+                            <inputSpec>
+                                ${project.basedir}/src/main/resources/open-api/client/bpmn-provider-api.yaml
+                            </inputSpec>
+                            <output>${project.build.directory}/generated-sources/open-api/client</output>
+                            <apiPackage>${openapi-generator.root.package}.v1.api</apiPackage>
+                            <modelPackage>${openapi-generator.root.package}.v1.model</modelPackage>
+                            <invokerPackage>${openapi-generator.root.package}.v1.invoker</invokerPackage>
+
+                            <enablePostProcessFile>true</enablePostProcessFile>
+                            <skipOverwrite>false</skipOverwrite>
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
