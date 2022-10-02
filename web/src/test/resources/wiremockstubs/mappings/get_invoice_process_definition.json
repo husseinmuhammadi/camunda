@@ -1,0 +1,14 @@
+{
+  "request": {
+    "urlPath": "/prod/engine-rest/process-definition/key/invoice/xml",
+    "method": "GET"
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json"
+    },
+    "status": 200,
+    "bodyFileName": "oauth_get_temporary_token_response.json",
+    "fixedDelayMilliseconds": 0
+  }
+}
