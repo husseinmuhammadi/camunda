@@ -26,6 +26,7 @@
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <lombok.version>1.18.22</lombok.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
 
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
