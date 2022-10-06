@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: BPMN Processor
+
+#logging:
+#  level:
+#    com.google.api: TRACE
+
+camunda:
+  bpmn:
+    diagrams:
+      url: http://localhost:${wiremock.server.port}

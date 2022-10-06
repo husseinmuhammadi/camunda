@@ -12,9 +12,7 @@
     <artifactId>bpmn-parser-web</artifactId>
 
     <properties>
-        <openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
-
-        <openapi-generator.root.package>com.camunda.bpmn.diagram</openapi-generator.root.package>
+        <openapi-generator.root.package>com.camunda.bpmn.generated</openapi-generator.root.package>
     </properties>
 
     <build>
@@ -72,6 +70,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- Open API Generator -->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
@@ -81,6 +80,7 @@
             <artifactId>jackson-databind-nullable</artifactId>
         </dependency>
 
+        <!-- Swagger UI -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
