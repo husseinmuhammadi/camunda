@@ -1,6 +1,6 @@
 package com.camunda.bpmn.dto;
 
-import com.javastudio.tutorial.twitter.oauth.exceptions.VertexNotFoundException;
+import com.camunda.bpmn.exceptions.VertexNotFoundException;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public abstract class AbstractGraph {
         return this.nodes.add(node) ? node : findNode(node);
     }
 
-    protected Node findNode(Node node)  {
+    protected Node findNode(Node node) {
         if (this.nodes.contains(node)) {
             Iterator<Node> iterator = this.nodes.iterator();
             while (iterator.hasNext()) {
@@ -29,7 +29,6 @@ public abstract class AbstractGraph {
         this.addNode(from).addNeighbour(to);
         return this;
     }
-
 
     public class Node {
         private final String value;
@@ -70,35 +69,26 @@ public abstract class AbstractGraph {
         }
     }
 
-    public void dfsIterative(String value) {
+    public Node[] dfsIterative(String value) {
         Stack<Node> stack = new Stack<>();
-        Set<Node> visited = new HashSet<>();
+        Set<Node> visited = new LinkedHashSet<>();
 
         stack.push(this.findNode(new Node(value)));
-        System.out.printf("%s pushed %n", value);
 
         while (!stack.isEmpty()) {
             Node node = stack.pop();
             visited.add(node);
 
-            System.out.printf("%s poped %n", node.getValue());
-            System.out.printf("%s -> %n", node.getValue());
-
             for (Node neighbour : node.getNeighbours()) {
                 if (!visited.contains(neighbour))
                     stack.push(neighbour);
-                System.out.printf("%s pushed %n", neighbour.getValue());
             }
         }
+
+        return visited.toArray(new Node[0]);
     }
 
-    public void dfsRecursive(String value) {
-        dfsRecursive(findNode(new Node(value)), new HashSet<>());
-    }
-
-    public void dfsRecursive(Node start, Set<Node> visited) {
-
-        // todo start should be in graph
+    protected void dfsRecursive(Node start, final Set<Node> visited) {
         visited.add(start);
 
         for (Node node : start.getNeighbours()) {
@@ -108,9 +98,9 @@ public abstract class AbstractGraph {
         }
     }
 
-    public void bfs(String value) {
+    public Node[] bfs(String value) {
         Queue<Node> queue = new LinkedList<>();
-        Set<Node> visited = new HashSet<>();
+        Set<Node> visited = new LinkedHashSet<>();
 
         Node start = findNode(new Node(value));
 
@@ -127,5 +117,7 @@ public abstract class AbstractGraph {
                 }
             }
         }
+
+        return visited.toArray(new Node[0]);
     }
 }

@@ -1,4 +1,4 @@
-package com.javastudio.tutorial.twitter.oauth.exceptions;
+package com.camunda.bpmn.exceptions;
 
 public class VertexNotFoundException extends RuntimeException{
 
