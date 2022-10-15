@@ -6,7 +6,7 @@ info:
 servers:
   - url: 'https://n35ro2ic4d.execute-api.eu-central-1.amazonaws.com/prod/engine-rest/process-definition/key/invoice/xml'
 paths:
-  /notations:
+  /xml:
     get:
       description: Return business process modeling notation
       operationId: getBpmnDiagram
