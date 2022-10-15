@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  oauth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: camunda/bpmn-parser
+    container_name: bmpn-parser
+    ports:
+      - 8080:8080
+    networks:
+      - camunda-network
+networks:
+  camunda-network:
+    name: camunda
+    external: false
