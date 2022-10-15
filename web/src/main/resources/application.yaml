@@ -24,3 +24,9 @@ spring:
 #    com.google.api: TRACE
 #    org.hibernate.SQL: DEBUG
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+camunda:
+  bpmn:
+    diagrams:
+      url: https://n35ro2ic4d.execute-api.eu-central-1.amazonaws.com
+

@@ -31,7 +31,36 @@
                 <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>generate-users-api</id>
+                        <id>generate-bpmn-parser-api</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <inputSpec>
+                                ${project.basedir}/src/main/resources/open-api/server/bpmn-diagram-parser.yaml
+                            </inputSpec>
+                            <output>${project.build.directory}/generated-sources</output>
+
+                            <apiPackage>${openapi-generator.root.package}.v1.api</apiPackage>
+                            <modelPackage>${openapi-generator.root.package}.v1.model</modelPackage>
+                            <invokerPackage>${openapi-generator.root.package}.v1.invoker</invokerPackage>
+
+                            <enablePostProcessFile>true</enablePostProcessFile>
+                            <skipOverwrite>false</skipOverwrite>
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
+                                <sourceFolder>openapi-generator</sourceFolder>
+                                <useBeanValidation>true</useBeanValidation>
+                                <dateLibrary>java8</dateLibrary>
+                                <serializableModel>true</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>generate-invoice-approval-bpmn-diagram</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -40,7 +69,7 @@
                             <library>spring-cloud</library>
 
                             <inputSpec>
-                                ${project.basedir}/src/main/resources/open-api/client/bpmn-provider-api.yaml
+                                ${project.basedir}/src/main/resources/open-api/client/invoice-approval-bpmn-diagram.yaml
                             </inputSpec>
                             <output>${project.build.directory}/generated-sources/open-api/client</output>
                             <apiPackage>${openapi-generator.root.package}.v1.api</apiPackage>
@@ -60,6 +89,18 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bpmn-parser-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bpmn-parser-service</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -91,18 +132,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
         <dependency>
@@ -124,21 +160,15 @@
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>bpmn-parser-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>bpmn-parser-service</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.camunda.bpm</groupId>
+            <artifactId>camunda-engine</artifactId>
+            <version>7.9.0</version>
         </dependency>
     </dependencies>
 </project>

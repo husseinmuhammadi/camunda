@@ -1,0 +1,22 @@
+openapi: 3.0.3
+info:
+  title: Camunda business process modeling XML notation processor
+  description: Camunda business process modeling XML notation processor
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /business-model:
+    get:
+      description: Populate business process modeling notation as a XML
+      operationId: getBusinessProcessingModelingNotation
+      responses:
+        200:
+          description: The BPMN populated in XML
+          content:
+            application/xml:
+              schema:
+                type: string
+
+
+
