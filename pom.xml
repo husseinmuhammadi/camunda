@@ -15,8 +15,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-boot.version>2.4.4</spring-boot.version>
-        <spring-cloud.version>2020.0.0</spring-cloud.version>
+        <spring-boot.version>2.5.5</spring-boot.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>

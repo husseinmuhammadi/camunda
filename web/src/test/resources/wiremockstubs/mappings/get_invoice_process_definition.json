@@ -8,7 +8,7 @@
       "content-type": "application/json"
     },
     "status": 200,
-    "bodyFileName": "oauth_get_temporary_token_response.json",
+    "bodyFileName": "get_invoice_process_definition_response.json",
     "fixedDelayMilliseconds": 0
   }
 }
