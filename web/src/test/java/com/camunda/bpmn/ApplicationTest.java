@@ -1,9 +1,7 @@
 package com.camunda.bpmn;
 
-import com.javastudio.tutorial.twitter.oauth.integration.IntegrationTest;
+import com.camunda.bpmn.integration.IntegrationTest;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @IntegrationTest
 class ApplicationTest {
