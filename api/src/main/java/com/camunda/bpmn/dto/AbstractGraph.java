@@ -120,4 +120,29 @@ public abstract class AbstractGraph {
 
         return visited.toArray(new Node[0]);
     }
+
+    public Stack<Node> findPath(String source, String target) {
+        Stack<Node> stack = new Stack<>();
+        stack.push(findNode(new Node(source)));
+        findPossiblePath(stack, new Node(target));
+        return stack;
+    }
+
+    public boolean findPossiblePath(Stack<Node> stack, Node target) {
+        Node node = stack.peek();
+        if (node.equals(target))
+            return true;
+
+        for (Node neighbour : node.neighbours) {
+            if (stack.contains(neighbour))
+                continue;
+            stack.push(neighbour);
+            if (findPossiblePath(stack, target))
+                return true;
+        }
+
+        stack.pop();
+        return false;
+    }
+
 }
