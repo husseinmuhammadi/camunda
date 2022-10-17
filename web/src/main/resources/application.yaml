@@ -1,7 +1,6 @@
 spring:
   application:
     name: BPMN Processor
-
   datasource:
     url: jdbc:postgresql://localhost:5432/camunda
     username: camunda
@@ -18,9 +17,11 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-
-#logging:
-#  level:
+  main:
+    banner-mode: off
+logging:
+  level:
+    root: warn
 #    com.google.api: TRACE
 #    org.hibernate.SQL: DEBUG
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
