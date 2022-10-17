@@ -20,3 +20,8 @@ Please specify the ID of the nodes you find to find a path.
 In this project I take advantage of class **Graph** to convert the given bpmn to a traversable data structure.
 
 For processing the fetched XML and finding the path I fired Event to make processes loose couple from each other.
+
+In order to ensure the project working well in prod I add 
+Unit tests: to ensure the methods and classes works fine
+Integration test: to test all parts with context 
+Wiremock test: to test entire project and not mocking any thing
