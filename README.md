@@ -15,6 +15,16 @@ You can run the project with the instruction below.
 java -jar web/target/demo.jar from to
 ```
 
+for example 
+
+```
+java -jar web/target/demo.jar StartEvent_1 reviewInvoice
+```
+and the result would be:
+```
+StartEvent_1,assignApprover,approveInvoice,invoice_approved,reviewInvoice,
+```
+
 Please specify the ID of the nodes you find to find a path.
 
 In this project I take advantage of class **Graph** to convert the given bpmn to a traversable data structure.
