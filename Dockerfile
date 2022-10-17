@@ -1,7 +1,10 @@
 FROM maven:3.6.0-jdk-11 AS build
 WORKDIR /build
 COPY pom.xml pom.xml
-COPY src src
+COPY api api
+COPY service service
+COPY web web
+COPY repository repository
 RUN mvn clean package
 
 FROM openjdk:11

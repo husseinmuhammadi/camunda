@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.Stack;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -151,4 +152,35 @@ class GraphTest {
         graph.addEdge("B", "D").addEdge("D", "C");
         return graph;
     }
+
+    @MethodSource("graphsPath")
+    @ParameterizedTest
+    void findPath(Graph graph, boolean hasPath) {
+        Stack<AbstractGraph.Node> path = graph.findPath("A", "C");
+        assertEquals(hasPath, !path.isEmpty());
+    }
+
+    private static Stream<Arguments> graphsPath() {
+        return Stream.of(
+                Arguments.of(graph(), false),
+                Arguments.of(graph1(), true),
+                Arguments.of(graph2(), true),
+                Arguments.of(graph3(), true)
+        );
+    }
+
+    private static Graph graph3() {
+        Graph graph = new Graph();
+        graph.addNode("A").addNeighbour("B").addNeighbour("C");
+        return graph;
+    }
+
+    private static Graph graph2() {
+        Graph graph = new Graph();
+        graph.addNode("A").addNeighbour("B").addNeighbour("C");
+        graph.findNode("B").addNeighbour("D").addNeighbour("C");
+        graph.findNode("D").addNeighbour("B").addNeighbour("C");
+        return graph;
+    }
+
 }
